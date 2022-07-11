@@ -1,5 +1,5 @@
 public class Box {
-    volatile boolean boxSwitch = false;
+    private static volatile boolean boxSwitch = false;
 
     public boolean isBoxSwitch() {
         return boxSwitch;
@@ -11,5 +11,9 @@ public class Box {
 
     public void setBoxSwitchOff() {
         this.boxSwitch = false;
+    }
+
+    public static boolean getBoxSwitch(){
+        return boxSwitch;
     }
 }

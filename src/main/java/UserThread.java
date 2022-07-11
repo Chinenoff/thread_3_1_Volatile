@@ -1,9 +1,9 @@
 public class UserThread extends Thread {
 
     private static final int TIME_USER_OPEN = 2500;
-    private final int COUNTERATTEMPT = 4;
+    private final int counterAttempt = 4;
     private int currentCounter = 0;
-    Box box;
+    private Box box;
 
     UserThread(Box box) {
         this.box = box;
@@ -18,15 +18,16 @@ public class UserThread extends Thread {
         try {
             while (!isInterrupted()) {
                 Thread.sleep(TIME_USER_OPEN);
-                if (!box.boxSwitch) {
+                if (!Box.getBoxSwitch()) {
                     System.out.printf("попытка %d \n", 1 + currentCounter);
                     System.out.println("Пользователь ВКЛЮЧИЛ тумблер!");
                     box.setBoxSwitchOn();
                     currentCounter++;
                 }
-                if (currentCounter == COUNTERATTEMPT) {
+                if (currentCounter == counterAttempt) {
                     Thread.sleep(TIME_USER_OPEN);
-                    this.interrupt();
+                    //this.interrupt();
+                    return;
                 }
             }
         } catch (InterruptedException err) {

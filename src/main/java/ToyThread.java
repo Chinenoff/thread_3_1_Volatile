@@ -3,7 +3,7 @@ import java.util.Random;
 public class ToyThread extends Thread {
 
     //private final int TIME_TOY_CLOSE = 0; //Мгновенное отключение тумблера
-    Box box;
+    private Box box;
 
     ToyThread(Box box) {
         this.box = box;
